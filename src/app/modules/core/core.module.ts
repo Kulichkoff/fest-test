@@ -10,7 +10,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdminMotorsComponent } from './components/admin-motors/admin-motors.component';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import {
+    ConfirmationService,
+    MessageService,
+} from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CarCardComponent } from './components/car-card/car-card.component';
@@ -18,6 +21,7 @@ import { CarsListComponent } from './components/cars-list/cars-list.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { ImageModule } from 'primeng/image';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -42,9 +46,11 @@ import { ImageModule } from 'primeng/image';
         PaginatorModule,
         ContextMenuModule,
         ImageModule,
+        ConfirmDialogModule,
     ],
     providers: [
         MessageService,
+        ConfirmationService,
     ],
 })
 export class CoreModule {

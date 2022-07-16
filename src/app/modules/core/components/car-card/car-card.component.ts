@@ -1,28 +1,45 @@
 import {
     Component,
+    EventEmitter,
     Input,
+    OnInit,
+    Output,
 } from '@angular/core';
 import { ICar } from '../../models/car.interface';
-import { MenuItem } from 'primeng/api';
+import {
+    ConfirmationService,
+    MenuItem,
+} from 'primeng/api';
 
 @Component({
     selector: 'app-car-card',
     templateUrl: './car-card.component.html',
 })
-export class CarCardComponent {
+export class CarCardComponent implements OnInit {
 
     @Input() car!: ICar;
 
-    public menuItems: MenuItem[] = [
-        { label: 'Edit', icon: 'pi pi-pencil', command: () => this.onEditBtnClicked() },
-        { label: 'Remove', icon: 'pi pi-trash', command: () => this.onRemoveBtnClicked() },
-    ];
+    @Output() onEdit = new EventEmitter<ICar>();
+    @Output() onRemove = new EventEmitter<ICar>();
+
+    public menuItems!: MenuItem[];
+
+    constructor(
+        private readonly confirmationService: ConfirmationService,
+    ) {}
+
+    public ngOnInit() {
+        this.menuItems = [
+            { label: 'Edit', icon: 'pi pi-pencil', command: () => this.onEditBtnClicked() },
+            { label: 'Remove', icon: 'pi pi-trash', command: () => this.onRemoveBtnClicked() },
+        ];
+    }
 
     public onEditBtnClicked() {
-        console.log('edit', this.car.id);
+        this.onEdit.emit(this.car);
     }
 
     public onRemoveBtnClicked() {
-        console.log('remove', this.car.id);
+        this.onRemove.emit(this.car);
     }
 }
