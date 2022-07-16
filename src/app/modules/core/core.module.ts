@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { RouterModule } from '@angular/router';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -22,6 +21,10 @@ import { PaginatorModule } from 'primeng/paginator';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { ImageModule } from 'primeng/image';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CarConfigurationPanelComponent } from './components/car-configuration-panel/car-configuration-panel.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from '../../app-routing.module';
 
 
 @NgModule({
@@ -33,12 +36,13 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
         AdminMotorsComponent,
         CarCardComponent,
         CarsListComponent,
+        CarConfigurationPanelComponent,
     ],
     imports: [
         CommonModule,
         HttpClientModule,
+        ReactiveFormsModule,
         BrowserAnimationsModule,
-        RouterModule.forChild([]),
         SharedModule,
         ButtonModule,
         RippleModule,
@@ -47,10 +51,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
         ContextMenuModule,
         ImageModule,
         ConfirmDialogModule,
+        InputTextModule,
+        AppRoutingModule,
     ],
     providers: [
         MessageService,
         ConfirmationService,
+    ],
+    exports: [
+        MainPageComponent,
     ],
 })
 export class CoreModule {

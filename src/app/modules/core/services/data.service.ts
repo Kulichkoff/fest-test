@@ -19,10 +19,14 @@ export class DataService {
     public findCarsFullTextSearch(text: string) {
     }
 
+    public createCar(car: ICar): Observable<any> {
+        return this.http.post('/api/cars', car);
+    }
+
     public editCar(car: ICar) {
     }
 
-    public removeCar(car: ICar) {
+    public removeCar(car: ICar): Observable<any> {
         return this.http.delete(`/api/cars/${car.id}`);
     }
 }

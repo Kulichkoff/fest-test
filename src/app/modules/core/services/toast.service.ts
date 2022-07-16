@@ -11,6 +11,10 @@ export class ToastService {
     ) { }
 
     public notify(summary: string, text: string, type: 'success' | 'info' = 'success') {
-        this.messageService.add({ severity: type, summary: summary, detail: text });
+        this.messageService.add({ severity: type, summary, detail: text });
+    }
+
+    public error(summary: string, text: string) {
+        this.messageService.add({ severity: 'error', summary, detail: text });
     }
 }

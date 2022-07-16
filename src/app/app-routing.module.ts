@@ -3,11 +3,20 @@ import {
     RouterModule,
     Routes,
 } from '@angular/router';
-import { MainPageComponent } from './modules/core/components/main-page/main-page.component';
 import { NotFoundComponent } from './modules/core/components/not-found/not-found.component';
+import { AdminMotorsComponent } from './modules/core/components/admin-motors/admin-motors.component';
+import { CarConfigurationPanelComponent } from './modules/core/components/car-configuration-panel/car-configuration-panel.component';
+
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', component: MainPageComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'cars' },
+    {
+        path: 'cars', children: [
+            { path: '', component: AdminMotorsComponent },
+            { path: 'config', component: CarConfigurationPanelComponent },
+        ],
+    },
+
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '404' },
 ];

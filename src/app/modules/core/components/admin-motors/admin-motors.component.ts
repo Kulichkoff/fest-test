@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IButton } from '../../models/button.interface';
 import { ToastService } from '../../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-admin-motors',
@@ -14,6 +15,7 @@ export class AdminMotorsComponent {
 
     constructor(
         private readonly toastService: ToastService,
+        private readonly router: Router,
     ) { }
 
     public onToolbarClicked(button: IButton) {
@@ -26,6 +28,6 @@ export class AdminMotorsComponent {
     }
 
     private addMotors() {
-        this.toastService.notify('Автомобиль добавлен', 'Успешно добавлен автомобиль');
+        this.router.navigate(['/cars/config']).then();
     }
 }

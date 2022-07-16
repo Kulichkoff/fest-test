@@ -1,0 +1,78 @@
+<div class="surface-card p-3">
+    <h2 class="font-medium py-3 text-3xl text-900">Create new car</h2>
+
+    <form [formGroup]="configForm" (submit)="onSubmit()" class="p-3">
+        <div class="flex flex-row flex-wrap gap-5 lg:gap-3 align-items-center">
+            <div class="p-float-label">
+                <input type="text" pInputText formControlName="Name">
+                <label>Car's name</label>
+            </div>
+            <div class="p-float-label">
+                <input type="text" pInputText formControlName="Origin">
+                <label>Car's origin</label>
+            </div>
+
+            <div class="p-float-label">
+                <p-inputNumber formControlName="Year"></p-inputNumber>
+                <label>Car's year</label>
+            </div>
+
+            <div class="p-float-label">
+                <p-inputNumber formControlName="Horsepower"></p-inputNumber>
+                <label>Horsepower</label>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap gap-5 lg:gap-3">
+            <div class="p-float-label mt-6">
+                <p-inputNumber formControlName="Price" mode="currency"
+                               [currency]="configFormValue.Currency || 'USD'" [showButtons]="true"
+                               decrementButtonClass="p-button-danger"
+                               incrementButtonClass="p-button-success"
+                               incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
+                               buttonLayout="horizontal" [step]="250"></p-inputNumber>
+                <label>Car's price</label>
+            </div>
+            <div class="p-float-label mt-6">
+                <p-dropdown [options]="currencyDropdown" optionLabel="name" optionValue="code"
+                            formControlName="Currency"></p-dropdown>
+                <label>Currency</label>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap gap-5 lg:gap-3">
+            <div class="p-float-label mt-6">
+                <p-inputNumber formControlName="Acceleration"></p-inputNumber>
+                <label>Acceleration</label>
+            </div>
+
+            <div class="p-float-label mt-6">
+                <p-inputNumber formControlName="Displacement"></p-inputNumber>
+                <label>Displacement</label>
+            </div>
+
+            <div class="p-float-label mt-6">
+                <p-inputNumber formControlName="Cylinders"></p-inputNumber>
+                <label>Cylinders</label>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap gap-5 lg:gap-3">
+            <div class="p-float-label mt-6">
+                <p-inputNumber formControlName="Miles_per_Gallon"></p-inputNumber>
+                <label>Miles per Gallon</label>
+            </div>
+
+            <div class="p-float-label mt-6">
+                <p-inputNumber formControlName="Weight_in_lbs"></p-inputNumber>
+                <label>Weight, lbs</label>
+            </div>
+        </div>
+
+        <hr class="mt-5">
+
+        <input type="submit" pButton value="Submit" class="mt-4">
+    </form>
+</div>
+
+<p-toast></p-toast>
