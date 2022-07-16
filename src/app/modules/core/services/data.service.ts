@@ -13,7 +13,7 @@ export class DataService {
     ) { }
 
     public findAllCars(page: number, limit: number = 30): Observable<ICar[]> {
-        return this.http.get<ICar[]>(`/api/cars?_page=${page}&_limit=${limit}` );
+        return this.http.get<ICar[]>(`/api/cars?_page=${page + 1}&_limit=${limit}` );
     }
 
     public findCarsFullTextSearch(text: string) {

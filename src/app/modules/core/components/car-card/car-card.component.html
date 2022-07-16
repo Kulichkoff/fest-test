@@ -1,3 +1,32 @@
 <app-card>
-    <figure class="w-full"><img class="w-full" src="/assets/img/car.jpeg" [alt]="car.Name"></figure>
+    <div class="card__content">
+        <figure class="w-full"><img class="w-full" src="/assets/img/car.jpeg" [alt]="car.Name">
+        </figure>
+        <div class="py-2">
+            <div
+                class="flex flex-row align-items-center justify-content-between py-2 border-bottom-1 border-300">
+                <h5 class="font-bold p-0">Name:</h5>
+                <h5 class="p-0">{{car.Name | titlecase}}</h5>
+            </div>
+            <div
+                class="flex flex-row align-items-center justify-content-between py-2 border-bottom-1 border-300">
+                <h5 class="font-bold p-0">Price:</h5>
+                <h5 class="p-0">{{car.Price | currency:car.Currency}}</h5>
+            </div>
+            <div
+                class="flex flex-row align-items-center justify-content-between py-2 border-bottom-1 border-300">
+                <h5 class="font-bold p-0">Year:</h5>
+                <h5 class="p-0">{{car.Year | date:'YYYY'}}</h5>
+            </div>
+            <div
+                class="flex flex-row align-items-center justify-content-between py-2 border-bottom-1 border-300">
+                <h5 class="font-bold p-0">HP:</h5>
+                <h5 class="p-0">{{car.Horsepower}}</h5>
+            </div>
+            <div class="flex flex-row align-items-center justify-content-between py-2">
+                <h5 class="font-bold p-0">Origin:</h5>
+                <h5 class="p-0">{{car.Origin}}</h5>
+            </div>
+        </div>
+    </div>
 </app-card>
