@@ -38,6 +38,7 @@ export class CarsListComponent implements OnInit {
     ) { }
 
     public ngOnInit() {
+        this.addPaginationToQuery();
         this.activatedRoute.queryParams
             .subscribe((params) => {
                 this.initCarsList();
