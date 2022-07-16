@@ -16,14 +16,19 @@ export class DataService {
         return this.http.get<ICar[]>(`/api/cars?_page=${page + 1}&_limit=${limit}`);
     }
 
+    public findOneCar(id: number): Observable<ICar> {
+        return this.http.get<ICar>(`/api/cars/${id}`);
+    }
+
     public findCarsFullTextSearch(text: string) {
     }
 
-    public createCar(car: ICar): Observable<any> {
-        return this.http.post('/api/cars', car);
+    public createCar(car: ICar): Observable<ICar> {
+        return this.http.post<ICar>('/api/cars', car);
     }
 
-    public editCar(car: ICar) {
+    public editCar(before: ICar, after: ICar): Observable<ICar> {
+        return this.http.patch<ICar>(`/api/cars/${before.id}`, after);
     }
 
     public removeCar(car: ICar): Observable<any> {

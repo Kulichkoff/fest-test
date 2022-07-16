@@ -11,6 +11,7 @@ import {
 } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
 import { ToastService } from '../../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-cars-list',
@@ -27,6 +28,7 @@ export class CarsListComponent implements OnInit {
         private readonly dataService: DataService,
         private readonly confirmationService: ConfirmationService,
         private readonly toastService: ToastService,
+        private readonly router: Router,
     ) { }
 
     public ngOnInit() {
@@ -54,7 +56,7 @@ export class CarsListComponent implements OnInit {
     }
 
     public onCarEdit(car: ICar) {
-        //
+        this.router.navigate(['/cars/config', car.id]).then();
     }
 
     public onCarRemove(car: ICar) {

@@ -13,7 +13,8 @@ const routes: Routes = [
     {
         path: 'cars', children: [
             { path: '', component: AdminMotorsComponent },
-            { path: 'config', component: CarConfigurationPanelComponent },
+            { path: 'config', component: CarConfigurationPanelComponent, pathMatch: 'full' },
+            { path: 'config/:id', component: CarConfigurationPanelComponent },
         ],
     },
 

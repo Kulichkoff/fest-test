@@ -11,6 +11,7 @@ import { ToastService } from '../../services/toast.service';
 import { ICar } from '../../models/car.interface';
 import { DataService } from '../../services/data.service';
 import { first } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-car-configuration-panel',
@@ -60,13 +61,36 @@ export class CarConfigurationPanelComponent implements OnInit {
         return this.configForm.value as ICar;
     }
 
+    public currentCarId?: ICar['id'];
+    public currentCar?: ICar;
+
+    public title = 'Create new car';
+
     constructor(
         private readonly fb: FormBuilder,
         private readonly toastService: ToastService,
         private readonly dataService: DataService,
+        private readonly activatedRoute: ActivatedRoute,
     ) { }
 
-    public ngOnInit() {}
+    public ngOnInit() {
+        this.currentCarId = this.activatedRoute.snapshot.params['id'];
+        if (this.currentCarId) {
+            this.initCurrentCar();
+        }
+    }
+
+    private initCurrentCar() {
+        this.dataService.findOneCar(this.currentCarId!)
+            .pipe(
+                first(),
+            )
+            .subscribe((car) => {
+                this.currentCar = car;
+                this.configForm.patchValue({ ...car, Year: car.Year.slice(0, 4) });
+                this.title = `Edit "${car.Name}", ${car.id} ID`;
+            });
+    }
 
     public onSubmit() {
         this.configForm.markAllAsTouched();
@@ -77,6 +101,15 @@ export class CarConfigurationPanelComponent implements OnInit {
             );
             return;
         }
+
+        if (this.currentCar) {
+            this.updateCar();
+        } else {
+            this.createCar();
+        }
+    }
+
+    private createCar() {
         this.dataService.createCar({
             ...this.configFormValue,
             Year: `${this.configFormValue.Year}-01-01`,
@@ -84,9 +117,22 @@ export class CarConfigurationPanelComponent implements OnInit {
             .pipe(
                 first(),
             )
-            .subscribe(data => {
-                console.log(data);
+            .subscribe(() => {
+                this.toastService.notify('Successfully created a car', '');
             });
     }
 
+    private updateCar() {
+        this.dataService.editCar(
+            this.currentCar!, {
+                ...this.configFormValue,
+                Year: `${this.configFormValue.Year}-01-01`,
+            })
+            .pipe(
+                first(),
+            )
+            .subscribe(() => {
+                this.toastService.notify('Successfully updated a car', '');
+            });
+    }
 }
