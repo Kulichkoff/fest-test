@@ -1,0 +1,4 @@
+<span class="p-buttonset">
+    <button *ngFor="let button of buttonSet" pButton type="button" [label]="button.label"
+            icon="pi pi-{{button.icon}}" (click)="button.method()"></button>
+</span>

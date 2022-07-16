@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ],
     imports: [
         CommonModule,
+        SharedModule,
         ButtonModule,
         RippleModule,
         RouterModule.forChild([]),
