@@ -12,6 +12,7 @@ import { AdminMotorsComponent } from './components/admin-motors/admin-motors.com
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     imports: [
         CommonModule,
+        HttpClientModule,
         BrowserAnimationsModule,
         SharedModule,
         ButtonModule,

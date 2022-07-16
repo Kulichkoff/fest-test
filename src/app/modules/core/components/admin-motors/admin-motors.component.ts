@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IButton } from '../../models/button.interface';
 import { ToastService } from '../../services/toast.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
     selector: 'app-admin-motors',
@@ -14,7 +15,13 @@ export class AdminMotorsComponent {
 
     constructor(
         private readonly toastService: ToastService,
-    ) {}
+        private readonly dataService: DataService,
+    ) {
+        this.dataService.findAllCars()
+            .subscribe((cars) => {
+                console.log(cars);
+            })
+    }
 
     public onToolbarClicked(button: IButton) {
         switch (button.id) {
