@@ -1,27 +1,38 @@
-# FestTest
+# FEST Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+The project is a testing task from FEST Technologies.
 
-## Development server
+## Some words from me
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+I'd built this project with `Angular CLI` and UI Framework `PrimeNG`.
 
-## Code scaffolding
+### Main tasks:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [x] List output of API using cards;
+- [x] Preview the image;
+- [x] The car card is showing some general parameters;
+- [x] CRUD options onto models;
 
-## Build
+### Optional:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [ ] Full-text search;
+- [ ] Table-view page for car comparison;
+- [x] Web-Site header;
+- [x] Form validation;
+- [ ] User dropdown card in the right corner.
 
-## Running unit tests
+## Launching
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can start the project using simple command
 
-## Running end-to-end tests
+```shell
+yarn start
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## About tests
 
-## Further help
+Some units of the project are under the tests. Unit-testing is able to be started with command:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```shell
+yarn test
+```
