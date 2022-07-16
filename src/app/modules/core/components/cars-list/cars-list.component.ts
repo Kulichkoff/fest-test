@@ -15,6 +15,7 @@ import {
     ActivatedRoute,
     Router,
 } from '@angular/router';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
     selector: 'app-cars-list',
@@ -33,13 +34,33 @@ export class CarsListComponent implements OnInit {
         private readonly toastService: ToastService,
         private readonly router: Router,
         private readonly activatedRoute: ActivatedRoute,
+        private readonly spinnerService: SpinnerService,
     ) { }
 
     public ngOnInit() {
-        this.initCarsList();
+        this.activatedRoute.queryParams
+            .subscribe((params) => {
+                this.initCarsList();
+            });
     }
 
     private initCarsList() {
+        this.spinnerService.startLoading();
+        this.dataService.findAllCars()
+            .pipe(
+                first(),
+                catchError(err => {
+                    console.error(err);
+                    return EMPTY;
+                }),
+            )
+            .subscribe((cars) => {
+                this.carsList = cars;
+                this.spinnerService.stopLoading();
+            });
+    }
+
+    private addPaginationToQuery() {
         this.router.navigate([], {
             relativeTo: this.activatedRoute,
             queryParams: {
@@ -48,24 +69,12 @@ export class CarsListComponent implements OnInit {
             },
             queryParamsHandling: 'merge',
             skipLocationChange: false,
-        }).then(() => {
-            this.dataService.findAllCars()
-                .pipe(
-                    first(),
-                    catchError(err => {
-                        console.error(err);
-                        return EMPTY;
-                    }),
-                )
-                .subscribe((cars) => {
-                    this.carsList = cars;
-                });
-        });
+        }).then();
     }
 
     public onPageChange({ page }: any) {
         this.page = page;
-        this.initCarsList();
+        this.addPaginationToQuery();
         document.querySelector('app-admin-motors')!.scrollIntoView({ behavior: 'smooth' });
     }
 

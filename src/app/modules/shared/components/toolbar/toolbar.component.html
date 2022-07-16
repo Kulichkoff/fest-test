@@ -1,4 +1,12 @@
-<span class="p-buttonset">
-    <button *ngFor="let button of buttonSet; trackBy:trackById" pButton type="button" [label]="button.label"
-            icon="pi pi-{{button.icon}}" (click)="onButtonClicked(button)"></button>
-</span>
+<div class="flex flex-row justify-content-between">
+    <div class="p-buttonset">
+        <button *ngFor="let button of buttonSet; trackBy:trackById" pButton type="button"
+                [label]="button.label" icon="pi pi-{{button.icon}}"
+                (click)="onButtonClicked(button)"></button>
+    </div>
+
+    <div *ngIf="showSearchInput" class="p-input-icon-right">
+        <i class="pi pi-{{searchInputSpinner ? 'spinner pi-spin' : 'search'}}"></i>
+        <input type="text" pInputText placeholder="Search" [formControl]="searchInputControl">
+    </div>
+</div>
