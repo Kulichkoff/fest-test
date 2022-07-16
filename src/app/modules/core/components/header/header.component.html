@@ -2,7 +2,9 @@
     <div class="surface-section px-4 py-3 md:px-6 lg:px-8">
         <div
             class="flex align-items-center flex-column lg:justify-content-between lg:flex-row gap-5">
-            <h2 class="text-4xl text-900 font-semibold">LOGO</h2>
+            <a routerLink="/" class="cursor-pointer">
+                <h2 class="text-4xl text-900 font-semibold">LOGO</h2>
+            </a>
             <ul class="flex flex-column justify-content-center lg:flex-row gap-3">
                 <li *ngFor="let nav of navigation" class="flex justify-content-center">
                     <a class="text-700 cursor-pointer hover:text-900 transition-all transition-duration-200"

@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
     public navigation = [
-        { text: 'Каталог', link: '/' },
-        { text: 'Магазины', link: '/shops' },
-        { text: 'Доставка', link: '/delivery' },
+        { text: 'Catalog', link: '/' },
+        { text: 'Shops', link: '/shops' },
+        { text: 'Delivery', link: '/delivery' },
     ]
 }
