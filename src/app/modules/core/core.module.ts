@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarCardComponent } from './components/car-card/car-card.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { PaginatorModule } from 'primeng/paginator';
         RippleModule,
         ToastModule,
         PaginatorModule,
+        ContextMenuModule,
         RouterModule.forChild([]),
     ],
     providers: [

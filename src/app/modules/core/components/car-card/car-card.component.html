@@ -1,7 +1,8 @@
 <app-card>
-    <div class="card__content">
+    <div #carCard class="card__content">
         <figure class="w-full"><img class="w-full" src="/assets/img/car.jpeg" [alt]="car.Name">
         </figure>
+
         <div class="py-2">
             <div
                 class="flex flex-row align-items-center justify-content-between py-2 border-bottom-1 border-300">
@@ -30,3 +31,5 @@
         </div>
     </div>
 </app-card>
+
+<p-contextMenu [model]="menuItems" [target]="carCard"></p-contextMenu>
