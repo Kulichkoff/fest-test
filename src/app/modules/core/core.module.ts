@@ -17,6 +17,7 @@ import { CarCardComponent } from './components/car-card/car-card.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { ContextMenuModule } from 'primeng/contextmenu';
+import { ImageModule } from 'primeng/image';
 
 
 @NgModule({
@@ -33,13 +34,14 @@ import { ContextMenuModule } from 'primeng/contextmenu';
         CommonModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        RouterModule.forChild([]),
         SharedModule,
         ButtonModule,
         RippleModule,
         ToastModule,
         PaginatorModule,
         ContextMenuModule,
-        RouterModule.forChild([]),
+        ImageModule,
     ],
     providers: [
         MessageService,
