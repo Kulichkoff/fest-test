@@ -6,6 +6,7 @@ import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
         MainPageComponent,
         HeaderComponent,
         NotFoundComponent,
+        FooterComponent,
     ],
     imports: [
         CommonModule,
