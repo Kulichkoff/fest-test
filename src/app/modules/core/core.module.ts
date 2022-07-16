@@ -8,6 +8,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
+import { AdminMotorsComponent } from './components/admin-motors/admin-motors.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
         HeaderComponent,
         NotFoundComponent,
         FooterComponent,
+        AdminMotorsComponent,
     ],
     imports: [
         CommonModule,
