@@ -11,7 +11,10 @@ import {
 } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
 import { ToastService } from '../../services/toast.service';
-import { Router } from '@angular/router';
+import {
+    ActivatedRoute,
+    Router,
+} from '@angular/router';
 
 @Component({
     selector: 'app-cars-list',
@@ -29,6 +32,7 @@ export class CarsListComponent implements OnInit {
         private readonly confirmationService: ConfirmationService,
         private readonly toastService: ToastService,
         private readonly router: Router,
+        private readonly activatedRoute: ActivatedRoute,
     ) { }
 
     public ngOnInit() {
@@ -36,17 +40,27 @@ export class CarsListComponent implements OnInit {
     }
 
     private initCarsList() {
-        this.dataService.findAllCars(this.page)
-            .pipe(
-                first(),
-                catchError(err => {
-                    console.error(err);
-                    return EMPTY;
-                }),
-            )
-            .subscribe((cars) => {
-                this.carsList = cars;
-            });
+        this.router.navigate([], {
+            relativeTo: this.activatedRoute,
+            queryParams: {
+                _page: this.page + 1,
+                _limit: 24,
+            },
+            queryParamsHandling: 'merge',
+            skipLocationChange: false,
+        }).then(() => {
+            this.dataService.findAllCars()
+                .pipe(
+                    first(),
+                    catchError(err => {
+                        console.error(err);
+                        return EMPTY;
+                    }),
+                )
+                .subscribe((cars) => {
+                    this.carsList = cars;
+                });
+        });
     }
 
     public onPageChange({ page }: any) {

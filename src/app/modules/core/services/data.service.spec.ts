@@ -6,6 +6,7 @@ import {
     HttpTestingController,
 } from '@angular/common/http/testing';
 import { ICar } from '../models/car.interface';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DataService', () => {
     let service: DataService;
@@ -15,6 +16,7 @@ describe('DataService', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientTestingModule,
+                RouterTestingModule,
             ],
         });
         service = TestBed.inject(DataService);
@@ -36,13 +38,13 @@ describe('DataService', () => {
                 { id: 1, Name: 'dodge challenger' },
             ];
 
-            service.findAllCars(0, 2)
+            service.findAllCars()
                 .subscribe(cars => {
                     expect(cars.length).toBe(2);
                     expect(cars).toEqual(dummyCars as ICar[]);
                 });
 
-            const req = httpMock.expectOne('/api/cars?_page=1&_limit=2');
+            const req = httpMock.expectOne('/api/cars');
             expect(req.request.method).toBe('GET');
             req.flush(dummyCars);
         });
