@@ -1,0 +1,6 @@
+<div *ngIf="carsList" class="flex flex-row flex-wrap justify-content-center">
+    <app-car-card *ngFor="let car of carsList" [car]="car" class="col-4"></app-car-card>
+</div>
+
+<p-paginator [rows]="10" [totalRecords]="carsListFullSize"
+             (onPageChange)="onPageChange($event)"></p-paginator>

@@ -13,6 +13,9 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { CarCardComponent } from './components/car-card/car-card.component';
+import { CarsListComponent } from './components/cars-list/cars-list.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 
 @NgModule({
@@ -22,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
         NotFoundComponent,
         FooterComponent,
         AdminMotorsComponent,
+        CarCardComponent,
+        CarsListComponent,
     ],
     imports: [
         CommonModule,
@@ -31,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
         ButtonModule,
         RippleModule,
         ToastModule,
+        PaginatorModule,
         RouterModule.forChild([]),
     ],
     providers: [

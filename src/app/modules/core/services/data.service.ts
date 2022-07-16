@@ -12,7 +12,16 @@ export class DataService {
         private readonly http: HttpClient,
     ) { }
 
-    public findAllCars(): Observable<ICar> {
-        return this.http.get<ICar>('/api/cars');
+    public findAllCars(page: number, limit: number = 30): Observable<ICar[]> {
+        return this.http.get<ICar[]>(`/api/cars?_page=${page}&_limit=${limit}` );
+    }
+
+    public findCarsFullTextSearch(text: string) {
+    }
+
+    public editCar(car: ICar) {
+    }
+
+    public removeCar(car: ICar) {
     }
 }
