@@ -9,6 +9,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdminMotorsComponent } from './components/admin-motors/admin-motors.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,10 +24,15 @@ import { AdminMotorsComponent } from './components/admin-motors/admin-motors.com
     ],
     imports: [
         CommonModule,
+        BrowserAnimationsModule,
         SharedModule,
         ButtonModule,
         RippleModule,
+        ToastModule,
         RouterModule.forChild([]),
+    ],
+    providers: [
+        MessageService,
     ],
 })
 export class CoreModule {

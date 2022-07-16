@@ -4,6 +4,8 @@ import {
 } from '@angular/core/testing';
 
 import { AdminMotorsComponent } from './admin-motors.component';
+import { ToastService } from '../../services/toast.service';
+import { MessageService } from 'primeng/api';
 
 describe('AdminMotorsComponent', () => {
     let component: AdminMotorsComponent;
@@ -12,6 +14,10 @@ describe('AdminMotorsComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [AdminMotorsComponent],
+            providers: [
+                ToastService,
+                MessageService,
+            ],
         })
             .compileComponents();
 

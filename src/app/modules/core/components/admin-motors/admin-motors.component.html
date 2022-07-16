@@ -1,4 +1,6 @@
 <app-card>
     <h2 class="font-medium py-3 text-3xl text-900">Cars toolbar</h2>
-    <app-toolbar [buttonSet]="toolbarButtonSet"></app-toolbar>
+    <app-toolbar [buttonSet]="toolbarButtonSet" (buttonClicked)="onToolbarClicked($event)"></app-toolbar>
 </app-card>
+
+<p-toast></p-toast>
