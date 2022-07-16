@@ -1,12 +1,12 @@
-<header>
-    <div class="surface-section px-4 py-5 md:px-6 lg:px-8">
+<header class="shadow-2">
+    <div class="surface-section px-4 py-3 md:px-6 lg:px-8">
         <div
             class="flex align-items-center flex-column lg:justify-content-between lg:flex-row gap-5">
             <h2 class="text-4xl text-900 font-semibold">LOGO</h2>
             <ul class="flex flex-column justify-content-center lg:flex-row gap-3">
-                <li *ngFor="let nav of navigation"
-                    class="text-700 cursor-pointer hover:text-900 transition-all transition-duration-200">
-                    <a [routerLink]="nav.link">
+                <li *ngFor="let nav of navigation" class="flex justify-content-center">
+                    <a class="text-700 cursor-pointer hover:text-900 transition-all transition-duration-200"
+                       [routerLink]="nav.link">
                         {{nav.text}}
                     </a>
                 </li>
