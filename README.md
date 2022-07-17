@@ -15,7 +15,7 @@ I'd built this project with `Angular CLI` and UI Framework `PrimeNG`.
 
 ### Optional:
 
-- [ ] Full-text search;
+- [x] Full-text search;
 - [ ] Table-view page for car comparison;
 - [x] Web-Site header;
 - [x] Form validation;
